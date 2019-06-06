@@ -1,18 +1,17 @@
+$padcolor: radial-gradient(circle, rgba(255,255,255,1) 0%, rgba(255,255,244,1) 30%, rgba(255,255,149,1) 100%);
+$active: rgba(255,255,149,1);
 * {
-  font-family: "Raleway", sans-serif;
+ font-family: 'Raleway', sans-serif;
 }
-
 body {
   margin: 0px;
 }
-
 #root {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
 }
-
 #drum-machine {
   background-color: #2F2F2F;
   width: 700px;
@@ -20,14 +19,12 @@ body {
   padding: 25px;
   color: white;
 }
-
 .title {
   margin-top: 0px;
   margin-left: 3px;
   display: inline-block;
   letter-spacing: 2px;
 }
-
 .fa-power-off {
   float: right;
   font-size: 16px;
@@ -36,30 +33,25 @@ body {
   border-radius: 50%;
   padding: 6px;
 }
-
 .power-on {
-  color: #ffff95;
+  color: $active;
   border: solid;
   border-radius: 50%;
   padding: 6px;
 }
-
 .lessweight {
   font-weight: 400;
 }
-
 .flex {
   display: flex;
   justify-content: space-between;
 }
-
 .pads {
   width: 270px;
   border-radius: 5px;
   background: black;
 }
-
-.drum-pad-off, .drum-pad {
+%style-shared {
   width: 80px;
   height: 80px;
   border-radius: 5px;
@@ -67,63 +59,57 @@ body {
   margin: 5px;
   font-size: 20px;
 }
-
 .drum-pad {
-  background: radial-gradient(circle, white 0%, #fffff4 30%, #ffff95 100%);
+  @extend %style-shared;
+  background: $padcolor;
 }
-
 .drum-pad-active {
-  background: #ffff95;
+  background: $active;
 }
-
+.drum-pad-off {
+  @extend %style-shared;
+}
 #display {
   background-color: black;
   width: 380px;
   height: 150px;
   margin-top: 0px;
 }
-
 .textdisplay {
   text-align: center;
   font-size: 24px;
   margin: 0px auto;
   padding-top: 40px;
   padding-bottom: 40px;
-  font-family: "Orbitron", sans-serif;
+  font-family: 'Orbitron', sans-serif;
   border-bottom: solid 1px;
   width: 95%;
 }
-
 .textdisplayoff {
   border: none;
 }
-
 .volumedisplay {
   display: inline-block;
-  margin-left: 10px;
-  font-family: "Orbitron", sans-serif;
+  margin-left:10px;
+  font-family: 'Orbitron', sans-serif;
 }
-
 .styledisplay {
   float: right;
   margin-right: 15px;
-  font-family: "Orbitron", sans-serif;
+  font-family: 'Orbitron', sans-serif;
 }
-
 .volumeicon {
   font-size: 25px;
   margin-right: 10px;
   width: 30px;
 }
-
 .slidecontainer {
   margin-top: 16px;
 }
-
 .slider {
   -webkit-appearance: none;
   position: absolute;
-  margin-top: 6px;
+  margin-top:6px;
   width: 338px;
   height: 15px;
   background: black;
@@ -145,7 +131,9 @@ body {
   background: grey;
   cursor: pointer;
 }
-
+.stylecontainer {
+  
+}
 .styleswitch {
   border: solid 3px grey;
   padding: 4px;
@@ -154,7 +142,6 @@ body {
   width: 60px;
   height: 44px;
 }
-
 .stylelabel {
   font-size: 14px;
   font-weight: 700;
@@ -164,49 +151,40 @@ body {
   background: #2F2F2F;
   color: grey;
 }
-
 .toggle {
   font-size: 38px;
-  color: #ffff95;
+  color: $active;
   display: block;
   text-align: center;
   position: relative;
   bottom: 12px;
 }
-
 .toggleelectric {
   -webkit-transform: scaleX(-1);
   transform: scaleX(-1);
 }
-
 .toggleoff {
   color: white;
 }
 
-@media only screen and (max-width: 750px) {
+@media only screen and (max-width:750px) {
   #root {
     display: block;
   }
-
   #drum-machine {
     width: 370px;
     height: 620px;
     margin: 10px auto;
   }
-
   .flex {
     flex-direction: column;
     align-items: center;
   }
-
   #display {
     margin-top: 30px;
     width: 330px;
   }
-
   .slider {
     width: 288px;
   }
 }
-
-/*# sourceMappingURL=index.css.map */
