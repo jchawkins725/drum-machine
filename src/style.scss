@@ -62,6 +62,7 @@ body {
 .drum-pad {
   @extend %style-shared;
   background: $padcolor;
+  cursor: pointer;
 }
 .drum-pad-active {
   background: $active;
@@ -158,6 +159,7 @@ body {
   text-align: center;
   position: relative;
   bottom: 12px;
+  cursor: pointer;
 }
 .toggleelectric {
   -webkit-transform: scaleX(-1);
