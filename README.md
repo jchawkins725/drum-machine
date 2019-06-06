@@ -1,1 +1,1 @@
-This Drum-Machine project was build with React using Create-React-App.
+This Drum-Machine project was built with React using Create-React-App.
