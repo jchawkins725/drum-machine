@@ -210,5 +210,29 @@ body {
     width: 288px;
   }
 }
+@media only screen and (max-width: 420px) {
+  #drum-machine {
+    width: 96%;
+    height: 680px;
+    margin: 0px;
+    padding: 2%;
+  }
+
+  #display {
+    width: 300px;
+  }
+
+  .volumedisplay {
+    font-size: 14px;
+  }
+
+  .styledisplay {
+    font-size: 14px;
+  }
+
+  .slider {
+    width: 259px;
+  }
+}
 
 /*# sourceMappingURL=index.css.map */
