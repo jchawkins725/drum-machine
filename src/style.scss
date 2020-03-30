@@ -25,6 +25,11 @@ body {
   display: inline-block;
   letter-spacing: 2px;
 }
+.powercontainer {
+  background: none;
+  border: none;
+  float: right;
+}
 .fa-power-off {
   float: right;
   font-size: 16px;
@@ -132,8 +137,9 @@ body {
   background: grey;
   cursor: pointer;
 }
-.stylecontainer {
-  
+.stylebuttoncontainer {
+  background: none;
+  border: none;
 }
 .styleswitch {
   border: solid 3px grey;

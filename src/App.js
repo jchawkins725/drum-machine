@@ -1,6 +1,5 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import '../src/App.css';
 
 const drums = [
   {name:'Crash', src:'https://res.cloudinary.com/dzsmdyknz/video/upload/v1532587948/fcc-drum-machine/cymbals%202/cymbalcrash1.mp3', key: "Q", keycode: 81},
@@ -32,7 +31,7 @@ function Title(props) {
   return (
     <div>
     <h1 className="title"><span className="lessweight">DRUM</span>MACHINE</h1>
-    <i className={`fas fa-power-off ${props.power ? "power-on" : "" }`} onClick={props.powerclick}></i>
+    <button className={`powercontainer`}onClick={props.powerclick}><i className={`fas fa-power-off ${props.power ? "power-on" : "" }`}></i></button>
     </div>
   );
 }
@@ -75,7 +74,7 @@ class Drum extends React.Component {
   }
   render () {
     return (
-    <button className={`drum-pad ${this.state.active}`} id={this.props.padname} onClick={this.handleClick}>{this.props.padkey}<audio src={this.props.padsrc} className="clip" id={this.props.padkey}></audio></button>
+    <button className={`drum-pad ${this.state.active}`} id={this.props.padname} onClick={this.handleClick}>{this.props.padkey}<audio src={this.props.padsrc} className="clip" id={this.props.padkey}><track src="" kind="captions" srclang="en" label="English"></track></audio></button>
     )
   }
 }
@@ -109,13 +108,13 @@ class Display extends React.Component {
           {power ? <p className="styledisplay">Style: {this.props.style}</p> : <p className="styledisplay"></p>}</div>
       </div>
       <div className="slidecontainer">
-        {power ? <i class={`fas volumeicon ${volume == 0 ? "fa-volume-mute" : volume > 0 && volume < 50 ? "fa-volume-down" : "fa-volume-up" }`}></i> : <i class="fas volumeicon fa-volume-mute"></i>}     
+        {power ? <i class={`fas volumeicon ${volume === 0 ? "fa-volume-mute" : volume > 0 && volume < 50 ? "fa-volume-down" : "fa-volume-up" }`}></i> : <i class="fas volumeicon fa-volume-mute"></i>}     
         <input type="range" min="0" max="100" step="1" value={volume} className="slider" id="myRange" onChange={this.props.volumeChange}/>
       </div>
       <div className="stylecontainer">
       <div className="styleswitch">
         <div className="stylelabel">STYLE</div>
-        <i onClick={this.props.click} className={`fas toggle fa-toggle-on ${this.props.style === "Acoustic" ? "" : "toggleelectric"} ${power ? "" : "toggleoff"}`}></i>
+        <button onClick={this.props.click} className={`stylebuttoncontainer`}><i className={`fas toggle fa-toggle-on ${this.props.style === "Acoustic" ? "" : "toggleelectric"} ${power ? "" : "toggleoff"}`}></i></button>
       </div>
     </div>
     </div>
@@ -123,7 +122,7 @@ class Display extends React.Component {
   }
 }
 
-class App extends React.Component {
+class DrumApp extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -142,7 +141,6 @@ class App extends React.Component {
   }
   handlePower(e) {
     e.preventDefault();
-    const display = this.state.display;
     this.setState(prevState => (
       {power: !prevState.power, display: `${this.state.power ? '' : 'Rock on!'}`}
     ));
@@ -166,4 +164,4 @@ class App extends React.Component {
   }
 }
 
-export default App;
+export default DrumApp;
