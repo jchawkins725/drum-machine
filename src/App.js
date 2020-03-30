@@ -1,5 +1,6 @@
 import React from 'react';
 import '../src/App.css';
+import {FaVolumeMute, FaVolumeDown, FaVolumeUp, FaPowerOff, FaToggleOn} from 'react-icons/fa'
 
 const drums = [
   {name:'Crash', src:'https://res.cloudinary.com/dzsmdyknz/video/upload/v1532587948/fcc-drum-machine/cymbals%202/cymbalcrash1.mp3', key: "Q", keycode: 81},
@@ -31,7 +32,7 @@ function Title(props) {
   return (
     <div>
     <h1 className="title"><span className="lessweight">DRUM</span>MACHINE</h1>
-    <button className={`powercontainer`}onClick={props.powerclick}><i className={`fas fa-power-off ${props.power ? "power-on" : "" }`}></i></button>
+    <button className={`powercontainer`}onClick={props.powerclick}><div className={`power-off ${props.power ? "power-on" : "" }`}><FaPowerOff/></div></button>
     </div>
   );
 }
@@ -108,13 +109,13 @@ class Display extends React.Component {
           {power ? <p className="styledisplay">Style: {this.props.style}</p> : <p className="styledisplay"></p>}</div>
       </div>
       <div className="slidecontainer">
-        {power ? <i class={`fas volumeicon ${volume === 0 ? "fa-volume-mute" : volume > 0 && volume < 50 ? "fa-volume-down" : "fa-volume-up" }`}></i> : <i class="fas volumeicon fa-volume-mute"></i>}     
+        {power ? <div className={`volumeicon`}>{volume === 0 || volume === "0" ? <FaVolumeMute /> : volume > 0 && volume < 50 ? <FaVolumeDown /> : <FaVolumeUp />}</div> : <div className="volumeicon"><FaVolumeMute /></div>}     
         <input type="range" min="0" max="100" step="1" value={volume} className="slider" id="myRange" onChange={this.props.volumeChange}/>
       </div>
       <div className="stylecontainer">
       <div className="styleswitch">
         <div className="stylelabel">STYLE</div>
-        <button onClick={this.props.click} className={`stylebuttoncontainer`}><i className={`fas toggle fa-toggle-on ${this.props.style === "Acoustic" ? "" : "toggleelectric"} ${power ? "" : "toggleoff"}`}></i></button>
+        <button onClick={this.props.click} className={`stylebuttoncontainer`}><div className={`toggle ${this.props.style === "Acoustic" ? "" : "toggleelectric"} ${power ? "" : "toggleoff"}`}><FaToggleOn /></div></button>
       </div>
     </div>
     </div>
